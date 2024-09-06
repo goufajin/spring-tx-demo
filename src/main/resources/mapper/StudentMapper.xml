@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.demo.jyhspringdemo.mapper.StudentMapper">
+
+<!--    <insert id="batchAdd" parameterType="java.util.List">-->
+<!--        INSERT INTO CSF_SRV_VERSION(ID,SERVICE_CODE,SRV_INTERFACE,SRV_IMPL_CLASS,SRV_METHOD,SRV_RETURN,OP_ID,VERSION,STATUS,EXT_A,EXT_B) VALUES-->
+<!--        <foreach collection="list" item="item" index="index" separator="union all">-->
+<!--            SELECT  #{item.id} ,-->
+<!--            #{item.serviceCode},-->
+<!--            #{item.srvInterface},-->
+<!--            #{item.srvImplClass},-->
+<!--            #{item.srvMethod},-->
+<!--            #{item.srvReturn},-->
+<!--            #{item.opId},-->
+<!--            #{item.version},-->
+<!--            #{item.status},-->
+<!--            #{item.extA},-->
+<!--            #{item.extB}-->
+<!--            from dual-->
+<!--        </foreach>-->
+
+<!--    </insert>-->
+
+
+
+
+</mapper>

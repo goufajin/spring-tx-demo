@@ -1,0 +1,36 @@
+server:
+  port: 8089
+
+spring:
+  datasource:
+    # 数据库驱动
+    driver-class-name: org.postgresql.Driver
+    #    driver-class-name: oracle.jdbc.OracleDriver
+    #数据库链接地址
+    url: jdbc:postgresql://localhost:5432/postgres
+    #    url: jdbc:oracle:thin:@10.170.103.177:1521:crmtest
+    #数据库用户名
+    username: postgres
+    #    username: CSF_ADMIN
+    #    username: UOP_PARAM_CSF
+    #用户名对应密码
+    password:
+    #    password: Admin@321!#
+    #    password: adv34pay
+    hikari:
+      connection-timeout: 3000
+      validation-timeout: 5000
+      idle-timeout: 5000
+      login-timeout: 5
+      max-lifetime: 180000
+      maximum-pool-size: 50
+      minimum-idle: 1
+      read-only: false
+
+
+mybatis-plus:
+  configuration:
+    cache-enabled: true
+    use-generated-keys: false
+    default-executor-type: REUSE
+    use-actual-param-name: true
