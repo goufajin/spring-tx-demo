@@ -14,6 +14,8 @@ public interface IStudent {
 
     public void saveNew(Student student);
 
+    public void saveNever(Student student);
+
     public void delete(String id);
 
     public Student getStudent(String id);
@@ -21,4 +23,8 @@ public interface IStudent {
     public List<Student> getStudents();
 
     public void update(Student student);
+
+    public String sayHello(String name);
+
+    public void m3_3();
 }

@@ -7,6 +7,10 @@ import org.demo.jyhspringdemo.interfaces.IStudent;
 import org.demo.jyhspringdemo.interfaces.ITeacher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,7 +51,21 @@ public class TestController {
 
     }
 
+    /**
+     * never事务传播属性测试
+     */
+    @GetMapping("/test3")
+    public void test3() {
+        student.m3_3();
 
+    }
+
+    @GetMapping("cacheable")
+    public void testCacheable() {
+        String test = student.sayHello("test");
+        String test1 = student.sayHello("test");
+        System.out.println(test.equals(test1));
+    }
 
     public void m1() {
         Student bean = new Student();
@@ -88,5 +106,16 @@ public class TestController {
         teacher1.setId(UUID.randomUUID().toString());
         teacher1.setName("粗茶淡饭的");
         boolean teach = teacher.teachNew(teacher1);
+    }
+
+
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
+    public void m4() {
+
+        Teacher teacher1 = new Teacher();
+        teacher1.setId(UUID.randomUUID().toString());
+        teacher1.setName("粗茶淡饭的");
+        boolean teach = teacher.teach(teacher1);
+
     }
 }

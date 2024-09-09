@@ -1,6 +1,5 @@
 package org.demo.jyhspringdemo.interfaces.impl;
 
-import com.sun.org.apache.xerces.internal.dom.AbortException;
 import org.demo.jyhspringdemo.bean.Teacher;
 import org.demo.jyhspringdemo.interfaces.ITeacher;
 import org.demo.jyhspringdemo.mapper.TeacherMapper;
@@ -24,6 +23,10 @@ public class TeacherImpl implements ITeacher {
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public boolean teach(Teacher teacher) {
+        TransactionStatus txStatus = TransactionAspectSupport.currentTransactionStatus();
+
+        System.out.println("teach before: "+txStatus);
+
         int insert = mapper.insert(teacher);
         return insert > 0;
     }
@@ -36,9 +39,20 @@ public class TeacherImpl implements ITeacher {
         System.out.println("teachNew save: "+txStatus);
         int insert = mapper.insert(teacher);
         if (true) {
-            throw new AbortException();
+            throw new RuntimeException();
 
         }
         return insert > 0;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Throwable.class, propagation = Propagation.NEVER)
+    public void teachNever(Teacher teacher) {
+        TransactionStatus txStatus = TransactionAspectSupport.currentTransactionStatus();
+
+        System.out.println("teachNever save: "+txStatus);
+
+        mapper.insert(teacher);
+        throw new RuntimeException();
     }
 }

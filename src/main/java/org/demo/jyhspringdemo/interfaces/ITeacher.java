@@ -11,4 +11,6 @@ public interface ITeacher {
     boolean teach(Teacher teacher);
 
     boolean teachNew(Teacher teacher);
+
+    void teachNever(Teacher teacher);
 }
