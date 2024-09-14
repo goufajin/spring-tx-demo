@@ -83,12 +83,11 @@ public class StudentImpl implements IStudent {
 
 
     @Override
-    @Transactional(rollbackFor = Exception.class, propagation = Propagation.NEVER)
     public void m3_3(){
 
-        TransactionStatus txStatus = TransactionAspectSupport.currentTransactionStatus();
-
-        System.out.println("student m3_3(): "+txStatus);
+//        TransactionStatus txStatus = TransactionAspectSupport.currentTransactionStatus();
+//
+//        System.out.println("student m3_3(): "+txStatus);
         //student
         Student bean = new Student();
 
@@ -105,12 +104,11 @@ public class StudentImpl implements IStudent {
     @Autowired
     private ITeacher teacher;
 
-    @Transactional(rollbackFor = Exception.class, propagation = Propagation.NEVER)
     public void m3_4(){
 
-        TransactionStatus txStatus = TransactionAspectSupport.currentTransactionStatus();
-
-        System.out.println("student m3_4(): "+txStatus);
+//        TransactionStatus txStatus = TransactionAspectSupport.currentTransactionStatus();
+//
+//        System.out.println("student m3_4(): "+txStatus);
 
         Teacher teacher1 = new Teacher();
         teacher1.setId(UUID.randomUUID().toString());
